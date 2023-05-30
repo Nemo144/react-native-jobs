@@ -4,7 +4,7 @@ import { Stack, useRouter } from "expo-router";
 import { COLORS, icons, images, SIZES } from "../constants";
 import {
   Nearbyjobs,
-  PopularJobs,
+  Popularjobs,
   ScreenHeaderBtn,
   Welcome,
 } from "../components";
@@ -23,10 +23,19 @@ const Home = () => {
             <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" />
           ),
           headerRight: () => (
-            <ScreenHeaderBtn iconUrl={icons.profile} dimensions="60%" />
+            <ScreenHeaderBtn iconUrl={icons.profile} dimensions="100%" />
           ),
+          //   headerTitle: "",
         }}
       />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ flex: 1, padding: SIZES.medium }}>
+          <Welcome />
+          <Nearbyjobs />
+          <Popularjobs />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
