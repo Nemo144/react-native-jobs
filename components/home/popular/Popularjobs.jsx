@@ -27,7 +27,7 @@ const Popularjobs = () => {
       </View>
 
       <View style={styles.cardsContainer}>
-        {isLoading ? (
+        {!isLoading ? (
           <ActivityIndicator size="large" colors={COLORS.primary} />
         ) : error ? (
           <Text>Something went wrong</Text>
