@@ -30,6 +30,7 @@ const Company = ({ companyLogo, jobTitle, companyName, location }) => {
             resizeMode="contain"
             style={styles.locationImageß}
           />
+          <Text>{location}</Text>
         </View>
       </View>
     </View>
