@@ -4,7 +4,10 @@ import { SIZES } from "../../../constants";
 import styles from "./tabs.style";
 
 const TabButton = ({ name, activeTab, onHandleSearchType }) => (
-  <TouchableOpacity>
+  <TouchableOpacity
+    style={styles.btn(name, activeTab)}
+    onPress={onHandleSearchType}
+  >
     <Text>{name}</Text>
   </TouchableOpacity>
 );
@@ -21,6 +24,10 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
             onHandleSearchType={() => setActiveTab(item)}
           />
         )}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item}
+        contentContainerStyle={{ columnGap: SIZES.small / 2 }}
       />
     </View>
   );
