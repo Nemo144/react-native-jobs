@@ -28,7 +28,7 @@ const Company = ({ companyLogo, jobTitle, companyName, location }) => {
           <Image
             source={icons.location}
             resizeMode="contain"
-            style={styles.locationImageß}
+            style={styles.locationImage}
           />
           <Text>{location}</Text>
         </View>
