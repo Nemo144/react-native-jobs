@@ -26,6 +26,22 @@ const JobDetails = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const onRefresh = () => {};
+
+  const displayTabContent = () => {
+    switch (activeTab) {
+      case "Qualifications":
+        return (
+          <Specifics
+            title="Qualifications"
+            points={data[0].job_highlights?.qualifications ?? ["N/A"]}
+          />
+        );
+      case "About":
+      case "Responsibilities":
+      default:
+        break;
+    }
+  };
   const params = useSearchParams();
   const router = useRouter();
   const { data, isLoading, error, refetch } = useFetch("job-details", {
@@ -79,6 +95,8 @@ const JobDetails = () => {
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
               />
+
+              {displayTabContent()}
             </View>
           )}
         </ScrollView>
