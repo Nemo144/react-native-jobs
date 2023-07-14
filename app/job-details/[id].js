@@ -25,7 +25,18 @@ const JobDetails = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
-  const onRefresh = () => {};
+  const params = useSearchParams();
+  const router = useRouter();
+
+  const { data, isLoading, error, refetch } = useFetch("job-details", {
+    job_id: params.id,
+  });
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   const displayTabContent = () => {
     switch (activeTab) {
@@ -51,11 +62,7 @@ const JobDetails = () => {
         break;
     }
   };
-  const params = useSearchParams();
-  const router = useRouter();
-  const { data, isLoading, error, refetch } = useFetch("job-details", {
-    job_id: params.id,
-  });
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
